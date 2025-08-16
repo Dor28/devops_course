@@ -1,0 +1,36 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main, docs ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  docker-build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Build Docker image
+      run: |
+        cd docker
+        docker build -t fastapi-demo:latest .
+        
+    - name: Login to Docker Hub
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        
+    - name: Push to Docker Hub
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: |
+        cd docker
+        docker tag fastapi-demo:latest dor28/fastapi-demo:latest
+        docker tag fastapi-demo:latest dor28/fastapi-demo:${{ github.sha }}
+        docker push dor28/fastapi-demo:latest
+        docker push dor28/fastapi-demo:${{ github.sha }}

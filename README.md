@@ -1,127 +1,132 @@
-# FastAPI Hello World Application
+# DevOps Kursi - O'quv Loyihasi
 
-A simple FastAPI application demonstrating basic API endpoints and DevOps-ready features.
+DevOps texnologiyalari va amaliyotlarini o'rganish uchun mo'ljallangan keng qamrovli o'quv kursi.
 
-## Features
+## Kurs Haqida
 
-- Basic "Hello World" endpoint
-- Parameterized greeting endpoints
-- Health check endpoint for monitoring
-- Interactive API documentation
-- Production-ready with Uvicorn ASGI server
+Ushbu kurs zamonaviy DevOps amaliyotlarini amaliy mashg'ulotlar orqali o'rgatadi. Kurs davomida talabalar versiya nazorati, konteynerlashtirish, CI/CD pipeline, infrastruktura kodi va monitoring kabi asosiy mavzularni o'rganadilar.
 
-## Prerequisites
+## Kurs Maqsadlari
 
-- Python 3.7+
-- pip package manager
+- DevOps asoslarini tushunish
+- Git va versiya nazorati bilan ishlash
+- Docker konteynerlarini yaratish va boshqarish
+- CI/CD pipeline qurish
+- Infrastructure as Code (IaC) tamoyillarini qo'llash
+- Monitoring va logging tizimlarini sozlash
+- Production muhitida deployment amaliyotlari
 
-## Installation
+## Darsliklar va Amaliy Mashg'ulotlar
 
-1. Clone this repository:
+### 📁 [Git - Versiya Nazorati](./git/)
+- Git asoslari va buyruqlari
+- Branch strategiyalari
+- Merge va rebase amaliyotlari
+- Conflict resolution
+- GitHub workflow
+
+### 📁 [Docker - Konteynerlashtirish](./docker/)
+- Docker asoslari va kontseptsiyalari
+- Dockerfile yaratish
+- Multi-stage build
+- Container xavfsizlik amaliyotlari
+- Docker Compose
+
+### 📁 Kubernetes (kelgusida)
+- Container orkestrasiya
+- Pod, Service, Deployment
+- ConfigMap va Secret
+- Ingress va Load Balancing
+
+### 📁 CI/CD Pipeline
+- GitHub Actions ✅
+- Deployment strategiyalari ✅
+
+### 📁 Infrastructure as Code (kelgusida)
+- Terraform asoslari
+- AWS/Cloud provider integratsiyasi
+- Infrastructure versioning
+- State management
+
+### 📁 Monitoring va Logging (kelgusida)
+- Prometheus va Grafana
+- ELK Stack
+- Alerting va notification
+- Performance monitoring
+
+## Texnik Talablar
+
+- **Operating System**: Linux/macOS/Windows
+- **Tools**: Git, Docker, Python 3.7+
+- **Cloud Account**: AWS/GCP/Azure (ixtiyoriy)
+- **IDE**: VS Code (tavsiya etiladi)
+
+## CI/CD Pipeline
+
+Ushbu loyiha GitHub Actions orqali avtomatik CI/CD pipeline bilan jihozlangan:
+
+### Pipeline Xususiyatlari
+- **Docker Build**: Har bir commit da avtomatik Docker image yaratish
+- **Docker Hub Push**: Main branchga push qilinganda avtomatik deployment
+
+### Pipeline Ishlash Tartibi
+1. Code checkout
+2. Docker image build
+3. Docker Hub ga push (faqat main branch)
+
+### Docker Hub Repository
+- **Image**: [dor28/fastapi-demo](https://hub.docker.com/repository/docker/dor28/fastapi-demo/general)
+- **Tags**: `latest`, commit SHA
+
+### Lokal Test Qilish
 ```bash
-git clone <repository-url>
-cd fastapi-hello-world
-```
-
-2. Create a virtual environment (recommended):
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-## Running the Application
-
-### Development Mode
-```bash
-# Method 1: Direct execution
-python main.py
-
-# Method 2: Using uvicorn with auto-reload
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
-```
-
-### Production Mode
-```bash
-uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4
-```
-
-The application will be available at: http://localhost:8000
-
-## API Endpoints
-
-| Method | Endpoint | Description | Example |
-|--------|----------|-------------|---------|
-| GET | `/` | Basic hello world | `{"message": "Hello World!"}` |
-| GET | `/hello/{name}` | Personalized greeting | `{"message": "Hello DevOps!"}` |
-| GET | `/greet?name=value` | Greeting with query param | `{"greeting": "Hello Engineer!"}` |
-| GET | `/health` | Health check endpoint | `{"status": "healthy"}` |
-
-## API Documentation
-
-Once the application is running, you can access:
-
-- **Swagger UI**: http://localhost:8000/docs
-- **ReDoc**: http://localhost:8000/redoc
-
-## Testing the API
-
-### Using curl:
-```bash
-# Basic hello
-curl http://localhost:8000/
-
-# Hello with name
-curl http://localhost:8000/hello/DevOps
-
-# Greet with query parameter
-curl "http://localhost:8000/greet?name=Engineer"
-
-# Health check
+cd docker
+docker build -t fastapi-demo .
+docker run -p 8000:8000 fastapi-demo
 curl http://localhost:8000/health
 ```
 
-### Using Python requests:
-```python
-import requests
+## Qanday Boshlash
 
-response = requests.get("http://localhost:8000/")
-print(response.json())
-```
-
-## Docker Support
-
-### Build Docker image:
+1. **Repository klonlash:**
 ```bash
-docker build -t fastapi-hello-world .
+git clone <repository-url>
+cd devops_course
 ```
 
-### Run container:
-```bash
-docker run -d -p 8000:8000 fastapi-hello-world
+2. **Docker o'rnatish:** [Docker rasmiy sayti](https://docs.docker.com/get-docker/)
+
+3. **Birinchi darsni boshlash:** `git` papkasiga o'ting
+
+## Loyiha Tuzilishi
+
+```
+devops_course/
+├── README.md              # Asosiy kurs hujjatlari
+├── .github/workflows/     # GitHub Actions CI/CD pipeline
+│   └── ci.yml            # Avtomatik build, test va deploy
+├── git/                  # Git va versiya nazorati darsliklari
+├── docker/               # Docker konteynerlashtirish darsliklari
+│   ├── Dockerfile        # FastAPI ilovasi uchun
+│   ├── main.py          # Demo FastAPI ilovasi
+│   └── requirements.txt  # Python dependencies
+├── kubernetes/           # K8s orkestrasiya darsliklari (kelgusida)
+├── cicd/                # CI/CD pipeline darsliklari (kelgusida)
+├── iac/                 # Infrastructure as Code (kelgusida)
+└── monitoring/          # Monitoring va logging (kelgusida)
 ```
 
-## Project Structure
+## Qo'llab-quvvatlash
 
-```
-fastapi-hello-world/
-├── main.py              # Main application file
-├── requirements.txt     # Python dependencies
-├── README.md           # Project documentation
-└── Dockerfile          # Docker configuration (optional)
-```
+Savollar yoki yordam kerak bo'lsa:
+- Issue yarating repository da
+- Telegram guruhiga yozing
+- Email: devops-course@example.com
 
-## Dependencies
+## Litsenziya
 
-- **FastAPI**: Modern, fast web framework for building APIs
-- **Uvicorn**: Lightning-fast ASGI server implementation
+Ushbu o'quv materiallari MIT litsenziyasi ostida taqdim etilgan.
 
-## DevOps Integration
+---
 
-This application is designed with DevOps best practices:
-
-- **Health Check Endpoint**: `/health` for load balancers and monit
+*DevOps Engineer bo'lish sari birinchi qadam!* 🚀
