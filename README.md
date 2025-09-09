@@ -36,6 +36,8 @@ Ushbu kurs zamonaviy DevOps amaliyotlarini amaliy mashg'ulotlar orqali o'rgatadi
 - Container orkestrasiya asoslari ✅
 - Pod, Service, Deployment ✅
 - Horizontal Pod Autoscaler (HPA) ✅
+- **[Basic Kubernetes](./kubernetes/README.md)** - Manual deployment ✅
+- **[ArgoCD GitOps](./kubernetes/argocd/README.md)** - GitOps workflow ✅
 
 ### 📁 CI/CD Pipeline
 - GitHub Actions ✅
@@ -111,9 +113,19 @@ devops_course/
 │   ├── Dockerfile        # FastAPI ilovasi uchun
 │   ├── main.py          # Demo FastAPI ilovasi
 │   └── requirements.txt  # Python dependencies
-├── kubernetes/           # K8s orkestrasiya darsliklari (kelgusida)
+├── kubernetes/           # Kubernetes orkestrasiya darsliklari ✅
+│   ├── README.md         # Basic Kubernetes deployment
+│   ├── manifests/        # K8s manifests (deployment, service)
+│   └── argocd/          # GitOps bilan avtomatik deployment
+│       ├── README.md     # ArgoCD setup va demo
+│       ├── manifests/    # ArgoCD installation files
+│       ├── applications/ # ArgoCD application configs
+│       └── scripts/      # Setup automation scripts
+├── terraform/            # Infrastructure as Code (Terraform) ✅
+│   ├── README.md         # Terraform asoslari va amaliyot
+│   ├── aws-resources/    # AWS infrastructure examples
+│   └── modules/         # Reusable terraform modules
 ├── cicd/                # CI/CD pipeline darsliklari (kelgusida)
-├── iac/                 # Infrastructure as Code (kelgusida)
 └── monitoring/          # Monitoring va logging (kelgusida)
 ```
 

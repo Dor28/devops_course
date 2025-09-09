@@ -2,6 +2,13 @@
 
 Bu modulda Docker modulidagi FastAPI ilovasini Kubernetes clusterga deploy qilamiz. Stateless application va NodePort service ishlatamiz.
 
+## 📚 Lab Modules
+
+Bu Kubernetes lab ikki qismdan iborat:
+
+1. **[Basic Kubernetes](./README.md)** - Asosiy Kubernetes deployment (joriy fayl)
+2. **[ArgoCD GitOps](./argocd/README.md)** - GitOps workflow bilan avtomatik deployment
+
 ## Zaruriy Talablar
 
 ### Software
@@ -223,5 +230,16 @@ Ushbu labda quyidagilarni o'rgandik:
 ✅ **Scaling** - Horizontal pod autoscaler
 ✅ **Monitoring** - Logs va metrics ko'rish
 
+## 🚀 Keyingi Qadam: GitOps
+
+Asosiy Kubernetes kontseptlarni o'rgangandan so'ng, **ArgoCD** bilan zamonaviy GitOps workflow ni o'rganishni tavsiya qilamiz:
+
+👉 **[ArgoCD GitOps Lab](./argocd/README.md)**
+
+GitOps quyidagi imkoniyatlarni beradi:
+- 🔄 **Avtomatik deployment** - Git push = avtomatik deploy
+- 👁️ **Visual monitoring** - Real-time application holati
+- 🛡️ **Configuration drift detection** - Manual o'zgarishlarni aniqlash
+- 🎣 **Easy rollback** - Bir click bilan rollback
 
 ---
