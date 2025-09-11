@@ -27,11 +27,9 @@ cd monitoring
 - Grafana: http://localhost:3000 (admin/admin)
 - Prometheus: http://localhost:9090
 
-## Neler Kiritilgan
 
 - **Prometheus**: Ilovangizdan metrikalar yig'ish
 - **Grafana**: Dashboard va vizualizatsiya
-- **Loki**: Log agregatsiyasi
 - **Oddiy metrikalar**: `/metrics` endpoint orqali mavjud
 
 ## Dashboard Yaratish
@@ -39,15 +37,6 @@ cd monitoring
 **Qo'lda dashboard yaratish:**
 [DASHBOARD_GUIDE.md](./DASHBOARD_GUIDE.md) faylida batafsil qo'llanma
 
-**Avtomatik dashboard import:**
-```bash
-./import-dashboard.sh
-```
-
-Bu script avtomatik ravishda:
-- Prometheus va Loki data source yaratadi
-- FastAPI monitoring dashboardini import qiladi
-- Port forwarding ni sozlaydi
 
 ## Muammolarni Hal Qilish
 
