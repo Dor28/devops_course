@@ -1,10 +1,38 @@
-from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse, Response
+from starlette.middleware.base import BaseHTTPMiddleware
 from datetime import datetime
 import os
 import sys
+import time
+from prometheus_client import Counter, Histogram, Gauge, generate_latest, CONTENT_TYPE_LATEST
 
 app = FastAPI(title="Docker Demo API", version="1.0.0")
+
+# Prometheus metrics
+REQUEST_COUNT = Counter('http_requests_total', 'Total HTTP requests', ['method', 'endpoint', 'status'])
+REQUEST_DURATION = Histogram('http_request_duration_seconds', 'HTTP request duration')
+ACTIVE_REQUESTS = Gauge('http_requests_active', 'Active HTTP requests')
+
+class MetricsMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        ACTIVE_REQUESTS.inc()
+        start_time = time.time()
+        
+        response = await call_next(request)
+        
+        duration = time.time() - start_time
+        REQUEST_DURATION.observe(duration)
+        REQUEST_COUNT.labels(
+            method=request.method,
+            endpoint=request.url.path,
+            status=response.status_code
+        ).inc()
+        ACTIVE_REQUESTS.dec()
+        
+        return response
+
+app.add_middleware(MetricsMiddleware)
 
 @app.get("/", response_class=HTMLResponse)
 def read_root():
@@ -262,3 +290,7 @@ def get_info():
         "python_version": sys.version,
         "environment": os.environ.get("ENVIRONMENT", "development")
     }
+
+@app.get("/metrics")
+def metrics():
+    return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)
