@@ -19,6 +19,12 @@ jobs:
         cd docker
         docker build -t fastapi-demo:latest .
         
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: 'fastapi-demo:latest'
+        format: 'table'
+        
     - name: Login to Docker Hub
       uses: docker/login-action@v3
       with:

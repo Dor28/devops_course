@@ -51,11 +51,19 @@ Ushbu kurs zamonaviy DevOps amaliyotlarini amaliy mashg'ulotlar orqali o'rgatadi
 - Module yaratish va ishlatish ✅
 - Best practices va xavfsizlik ✅
 
-### 📁 Monitoring va Logging (kelgusida)
-- Prometheus va Grafana
-- ELK Stack
-- Alerting va notification
-- Performance monitoring
+### 📁 [Monitoring va Logging](./monitoring/)
+- Prometheus va Grafana ✅
+- FastAPI metrics collection ✅
+- Dashboard yaratish va sozlash ✅
+- ELK Stack (kelgusida)
+- Alerting va notification (kelgusida)
+- Performance monitoring (kelgusida)
+
+### 📁 [Trivy - Container Security](./trivy/)
+- Container vulnerability scanning ✅
+- CI/CD integration ✅
+- Security best practices ✅
+- Local scanning va analiz ✅
 
 ## Texnik Talablar
 
@@ -126,7 +134,14 @@ devops_course/
 │   ├── aws-resources/    # AWS infrastructure examples
 │   └── modules/         # Reusable terraform modules
 ├── cicd/                # CI/CD pipeline darsliklari (kelgusida)
-└── monitoring/          # Monitoring va logging (kelgusida)
+├── monitoring/          # Monitoring va logging ✅
+│   ├── README.md         # Prometheus va Grafana setup
+│   ├── DASHBOARD_GUIDE.md # Dashboard yaratish qo'llanmasi
+│   ├── manifests/        # Kubernetes manifests for monitoring
+│   ├── deploy.sh         # Avtomatik deployment script
+│   └── port-forward.sh   # Port forwarding uchun script
+└── trivy/               # Container Security Scanning ✅
+    └── README.md         # Trivy vulnerability scanning guide
 ```
 
 ## Qo'llab-quvvatlash
@@ -134,11 +149,11 @@ devops_course/
 Savollar yoki yordam kerak bo'lsa:
 - Issue yarating repository da
 - Telegram guruhiga yozing
-- Email: devops-course@example.com
+- Email: psanti99.sp@gmail.com
 
 ## Litsenziya
 
-Ushbu o'quv materiallari MIT litsenziyasi ostida taqdim etilgan.
+Ushbu o'quv materiallari Mohirdev course talabalari  uchun  taqdim etilgan. Copy qilish faqat Mohider course talabalari uchun. 
 
 ---
 
