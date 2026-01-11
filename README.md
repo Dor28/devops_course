@@ -153,7 +153,7 @@ Savollar yoki yordam kerak bo'lsa:
 
 ## Litsenziya
 
-Ushbu o'quv materiallari Mohirdev course talabalari  uchun  taqdim etilgan. Copy qilish faqat Mohider course talabalari uchun. 
+Ushbu o'quv materiallari Mohirdev course talabalari  uchun  taqdim etilgan. Copy qilish faqat Mohirdev course talabalari uchun. 
 
 ---
 
